@@ -1,0 +1,8 @@
+Datafiles will be saved in this directory.
+
+Every subject has both *.ana and *.mvt files. *.ana files are summary files
+that are suitable for analysis, containing enough information on where the 
+subject was aiming and where they ended up that one can track learning. The
+*.mvt files contain the full trajectory information (hopefully at 100 Hz), 
+suitable for other types of analysis (velocity, acceleration, curvature,
+etc.).
