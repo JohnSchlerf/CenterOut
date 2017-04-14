@@ -1,7 +1,7 @@
 import math
 
 # Import the appropriate "MotionHardware" class
-from UseMouse import MotionHardware
+from .UseMouse import MotionHardware
 # Could be expanded for additional plugins.
 
 class Cursor:

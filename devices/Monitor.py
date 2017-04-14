@@ -38,7 +38,7 @@ class Monitor:
         self.blankrectlist = []
         
         # This slightly speeds up drawText
-        self.textDic = {}
+        self.textDict = {}
 
         # Defaults (allows for back-projection, mirrors, rotation...)
         self.horizFlipped = False
@@ -125,12 +125,12 @@ class Monitor:
 
     def drawText(self,color,pos,text,defaultVertIsFlipped = True):
         """Draw (blit) text on the screen (self.screen). If cache is True, the
-        text bitmap will be stored into textDic for reuse.
+        text bitmap will be stored into textDict for reuse.
         """
-        if not self.textDic.has_key(text):
-            self.textDic[text] = self.font.render(text, 1, color)
+        if not text in self.textDict:
+            self.textDict[text] = self.font.render(text, 1, color)
         
-        width,height = self.textDic[text].get_size()
+        width,height = self.textDict[text].get_size()
         
         # handle screen flipping
         if self.horizFlipped:
@@ -140,7 +140,7 @@ class Monitor:
         
         pos = [int(round(pos[0]))-width/2,int(round(pos[1]))-height/2]
         
-        self.rectlist.append(self.myScreen.blit(pygame.transform.flip(self.textDic[text],
+        self.rectlist.append(self.myScreen.blit(pygame.transform.flip(self.textDict[text],
                                                                       self.horizFlipped,
                                                                       self.vertFlipped),
                                                 pos))
