@@ -213,7 +213,6 @@ class Adaptation_Experiment:
             keyList = list(dataDict.keys())
             for key in self.datFileKeyOrder:
                 if key in keyList:
-                    print(key)
                     datFileObj.write(str(key)+'\t')
                     keyList.remove(key)
             # Now write any data that I haven't explicitly ordered:
