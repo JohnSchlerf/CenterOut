@@ -1,6 +1,6 @@
 # stub
-from Tkinter import *
-from tkSimpleDialog import *
+from tkinter import Tk
+from tkinter.simpledialog import askstring
 
 def MyDialog(Prompt = '', defValue = 'Adapt'):
     top = Tk()
@@ -14,4 +14,4 @@ def MyDialog(Prompt = '', defValue = 'Adapt'):
 
 if __name__=="__main__":
     d = MyDialog()
-    print d
+    print(d)

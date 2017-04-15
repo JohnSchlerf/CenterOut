@@ -1,7 +1,9 @@
 # This implements a simple center-out reaching experiment.
 
 # My code:
-from devices import *
+from devices.Clock import Clock
+from devices.Cursor import Cursor
+from devices.Monitor import Monitor
 
 # Pygame:
 import pygame
@@ -28,7 +30,7 @@ FINISHED = 99
 try:
     subname = sys.argv[1]
 except IndexError:
-    from dialog import *
+    from dialog import MyDialog
     default = 'Subject'
     subname = MyDialog('Subject name (for data saving):',default)
 
@@ -43,13 +45,9 @@ def angle(tuple1,tuple2):
                       (tuple1[0]-tuple2[0])) * 180 / math.pi
 
 class Adaptation_Experiment:
-    # screen parameters:
-    width = 1024
-    height = 768
-    fullscreen = True
 
     # target parameters:
-    numTargets = 8
+    numTargets = 12
     targetDistance = 200 # pixels
     targetRadius = 10 # pixels
     targetColor = (128,128,0) # yellow
@@ -105,7 +103,7 @@ class Adaptation_Experiment:
                        'midpointAngle',
                        'finalX',
                        'finalY',
-                       'finalAngle'
+                       'finalAngle',
                        'feedbackX',
                        'feedbackY',
                        'feedbackAngle',
@@ -212,7 +210,7 @@ class Adaptation_Experiment:
             # Write a header first
 
             # First thing, write all the data that I've coded above:
-            keyList = dataDict.keys()
+            keyList = list(dataDict.keys())
             for key in self.datFileKeyOrder:
                 if key in keyList:
                     datFileObj.write(str(key)+'\t')
@@ -220,6 +218,7 @@ class Adaptation_Experiment:
             # Now write any data that I haven't explicitly ordered:
             for key in keyList:
                 datFileObj.write(str(key)+'\t')
+            # Write a newline:
             datFileObj.write('\n')
         else:
             datFileObj = open(datFileName,'a')
