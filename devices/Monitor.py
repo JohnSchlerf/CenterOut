@@ -17,7 +17,8 @@ def loadImage(filename, colorkey=(0,0,0)):
 
 class Monitor:
 
-    def __init__(self,width=1024,height=768,fullscreen=False,grabValue=1,textSize=40):
+    def __init__(self, width=1024, height=768, fullscreen=False, 
+            grabValue=1, textSize=40):
         
         pygame.init()
         pygame.font.init()
@@ -27,11 +28,11 @@ class Monitor:
         self.vertSize = height
 
         if fullscreen:
-            self.myScreen = pygame.display.set_mode((width,height),FULLSCREEN)
+            self.myScreen = pygame.display.set_mode((width, height),FULLSCREEN)
         else:
-            self.myScreen = pygame.display.set_mode((width,height))
+            self.myScreen = pygame.display.set_mode((width, height))
 
-        self.font = pygame.font.Font(None,textSize)
+        self.font = pygame.font.Font(None, textSize)
 
         # Using these speeds things up enormously
         self.rectlist = []
